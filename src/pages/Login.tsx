@@ -14,7 +14,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -30,11 +30,11 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const success = await login(username, password);
+      const success = await login(email, password);
       if (success) {
         navigate(from, { replace: true });
       } else {
-        setError("Nom d'utilisateur ou mot de passe incorrect");
+        setError("Email ou mot de passe incorrect");
       }
     } catch (err) {
       setError("Une erreur est survenue. Veuillez réessayer.");
@@ -74,16 +74,17 @@ const Login = () => {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium" htmlFor="username">
-                Nom d'utilisateur
+              <label className="text-sm font-medium" htmlFor="email">
+                Email
               </label>
               <Input
-                id="username"
-                placeholder="Entrez votre nom d'utilisateur"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                type="email"
+                placeholder="Entrez votre email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
-                autoComplete="username"
+                autoComplete="email"
               />
             </div>
             <div className="space-y-2">
@@ -136,10 +137,14 @@ const Login = () => {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col">
+          <div className="w-full text-center mt-2">
+            <a href="/register" className="text-blue-600 hover:underline">
+              Créer un compte
+            </a>
+          </div>
           <Separator className="my-4" />
           <p className="text-xs text-center text-muted-foreground">
-            Cette interface est une démonstration. Tout nom d'utilisateur et mot
-            de passe sera accepté.
+            Connectez-vous avec votre email et mot de passe ou créez un nouveau compte.
           </p>
         </CardFooter>
       </Card>

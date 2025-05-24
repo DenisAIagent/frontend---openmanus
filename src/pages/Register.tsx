@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -7,6 +9,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   // Redirige vers le backend pour l'OAuth GitHub
   const handleGitHubRegister = () => {
@@ -22,22 +26,18 @@ const Register = () => {
     }
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      if (!response.ok) {
-        const data = await response.json();
-        setError(data.detail || "Erreur lors de l'inscription.");
+      const success = await register(email, password, confirmPassword);
+      if (success) {
+        navigate("/login");
       } else {
-        // Redirige vers login ou dashboard
-        window.location.href = "/login";
+        setError("Erreur lors de l'inscription. Veuillez réessayer.");
       }
     } catch (err) {
       setError("Erreur réseau.");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -105,10 +105,10 @@ const Register = () => {
             alt="GitHub"
             className="w-5 h-5 mr-2"
           />
-          S’enregistrer avec GitHub
+          S'enregistrer avec GitHub
         </Button>
         <div className="mt-6 text-center text-sm">
-          Déjà un compte ?
+          Déjà un compte ?
           <a href="/login" className="text-blue-600 ml-1 hover:underline">
             Se connecter
           </a>
