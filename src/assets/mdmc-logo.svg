@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <!-- Triangle rouge -->
+  <path d="M85 100 L85 300 L250 200 Z" fill="#d32f2f"/>
+  <!-- Triangle blanc/transparent -->
+  <path d="M250 100 L250 300 L415 200 Z" fill="none" stroke="white" stroke-width="2"/>
+  <!-- Lettres MDMC -->
+  <path d="M470 130 L470 300 L510 300 L510 170 L590 260 L670 170 L670 300 L710 300 L710 130 L670 130 L590 220 L510 130 Z" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M740 130 L740 300 L780 300 L780 250 L860 250 C920 250 940 200 940 190 C940 130 900 130 860 130 Z" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M780 170 L860 170 C880 170 890 180 890 190 C890 200 880 210 860 210 L780 210 Z" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M980 130 L980 300 L1020 300 L1020 170 L1100 260 L1180 170 L1180 300 L1220 300 L1220 130 L1180 130 L1100 220 L1020 130 Z" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M1250 170 C1250 130 1290 130 1320 130 C1380 130 1400 170 1400 215 C1400 260 1380 300 1320 300 C1290 300 1250 300 1250 260 Z" fill="none" stroke="white" stroke-width="2"/>
+  <path d="M1290 170 L1290 260 L1320 260 C1350 260 1360 240 1360 215 C1360 190 1350 170 1320 170 Z" fill="none" stroke="white" stroke-width="2"/>
+</svg>
